@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,7 +13,24 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::get('/genders', 'UserController@getGenders');
+Route::get('/user/get-all', 'UserController@getAll')->middleware('checkAdmin');;
+Route::post('/user/delete', 'UserController@deleteUser')->middleware('checkAdmin');;
+Route::get('/heroes', 'HeroController@getHeroes');
+Route::get('/powers', 'PowerController@getPowers');
+Route::get('/update-hero', 'HeroController@getUpdateHero');
+Route::post('/hero/edit', 'HeroController@editHero')->middleware(['checkAdmin', 'checkNewHero']);
+Route::post('/hero/delete', 'HeroController@deleteHero')->middleware('checkAdmin');
+Route::post('/hero/upload-img', 'HeroController@uploadImg')->middleware(['checkAdmin', 'checkImage']);
+Route::post('/hero/delete-img', 'HeroController@deleteImg')->middleware('checkAdmin');
+Route::get('/hero/get-gallery', 'HeroController@getGallery');
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group([
+    'prefix' => 'auth'
+], function () {
+    Route::post('login', 'AuthApiController@login');
+    Route::post('register', 'AuthApiController@registration')->middleware(['checkAdmin','checkApiRegister']);
+    Route::post('logout', 'AuthApiController@logout');
+    Route::post('refresh', 'AuthApiController@refresh');
+    Route::post('me', 'AuthApiController@me');
 });
