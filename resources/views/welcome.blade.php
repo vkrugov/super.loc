@@ -1,100 +1,121 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+    <title>Laravel</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+    <!-- Styles -->
+    <style>
+        html, body {
+            background-color: #fff;
+            color: #636b6f;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 200;
+            height: 100vh;
+            margin: 0;
+        }
 
-            .full-height {
-                height: 100vh;
-            }
+        .full-height {
+            height: 100vh;
+        }
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+        .flex-center {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
 
-            .position-ref {
-                position: relative;
-            }
+        .position-ref {
+            position: relative;
+        }
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+        .top-right {
+            position: absolute;
+            right: 10px;
+            top: 18px;
+        }
 
-            .content {
-                text-align: center;
-            }
+        .content {
+            text-align: center;
+        }
 
-            .title {
-                font-size: 84px;
-            }
+        .title {
+            font-size: 84px;
+        }
+        .description ul{
+            font-size: 30px;
+        }
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+        .description {
+            font-size: 40px;
+            text-align: left;
+        }
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+        .links > a {
+            color: #636b6f;
+            padding: 0 25px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: .1rem;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
+        .m-b-md {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="flex-center position-ref full-height">
+    @if (Route::has('login'))
+        <div class="top-right links">
+            @auth
+                <a href="{{ url('/home') }}">Home</a>
+            @else
+                <a href="{{ route('login') }}">Login</a>
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
+                @if (Route::has('register'))
+                    <a href="{{ route('register') }}">Register</a>
+                @endif
+            @endauth
         </div>
-    </body>
+    @endif
+
+    <div class="content">
+        <div class="title m-b-md">
+            It is Backend for SuperHeroTeam
+        </div>
+        <div class="description">
+            To Use this App You need:
+            <ul>
+                <li>
+                    clone & install frontend from https://github.com/vkrugov/super-front
+                </li>
+                run:
+                <li>
+                    npm install
+                </li>
+                <li>
+                    npm run serve
+                </li>
+                <li>
+                    open created url
+                </li>
+            </ul>
+        </div>
+
+        <h1>Contacts:</h1>
+        <div class="links">
+            <a href="https://www.linkedin.com/in/vladimir-krugov/">Linked In</a>
+            <a href="">Skype: vladimir_2916</a>
+        </div>
+    </div>
+</div>
+</body>
 </html>
