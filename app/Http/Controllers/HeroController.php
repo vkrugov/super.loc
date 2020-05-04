@@ -24,7 +24,7 @@ class HeroController extends Controller
      */
     public function editHero(Request $request)
     {
-        $hero = Hero::firstOrNew(['id' => $request->id], [
+        $hero = Hero::updateOrCreate(['id' => $request->id], [
             'nickname' => $request->nickname,
             'real_name' => $request->real_name,
             'origin_description' => $request->origin_description,
@@ -32,7 +32,6 @@ class HeroController extends Controller
             'last_updater' => auth()->user()->email,
             'updated_at' => time(),
         ]);
-        $hero->save();
 
         Power::deleteHeroPowers($hero['id']);
         Power::saveHeroPowers($hero['id'], explode(',', $request->powers));

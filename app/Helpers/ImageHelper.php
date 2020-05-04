@@ -104,4 +104,9 @@ class ImageHelper
         $image = Image::make(Storage::get($imagePath))->resize(200, 250)->encode();
         Storage::disk($storageType)->put($imagePath, $image);
     }
+
+    public static function deleteHeroStorage($id)
+    {
+        Storage::disk(env('FILES_STORAGE_DRIVER'))->deleteDirectory('heroes' . DIRECTORY_SEPARATOR . $id);
+    }
 }

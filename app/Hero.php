@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Helpers\ImageHelper;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use App\Helpers\HeroHelper;
@@ -64,6 +65,7 @@ class Hero extends Model
     public static function deleteHero($id)
     {
         if($id) {
+            ImageHelper::deleteHeroStorage($id);
             Power::deleteHeroPowers($id);
             static::where(['id' => $id])->first()->delete();
         }

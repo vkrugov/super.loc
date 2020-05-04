@@ -17,7 +17,7 @@ class CheckImage
     public function handle($request, Closure $next)
     {
         $validator = Validator::make($request->all(), [
-            'image' => 'image|size:4096',
+            'image' => 'image',
         ]);
 
         if ($validator->fails()) {

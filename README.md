@@ -3,17 +3,18 @@
 Required:
 - PHP 7.2
 - Mysql
+- Ubuntu
 
 #You need
-- clone & run frontend from https://github.com/vkrugov/super-front
+- clone & install frontend from https://github.com/vkrugov/super-front
 - create DataBase 'super' in MySql
 
 ## For Localhost
 
 go to folder afore project and set permissions:
-- sudo chgrp -R www-data /abq.loc/
-- sudo chmod -R 775 /super.loc/storage/
-- sudo chmod -R 777 /super.loc/storage/logs
+- sudo chgrp -R www-data super.loc/
+- sudo chmod -R 775 super.loc/storage/
+- sudo chmod -R 777 super.loc/storage/logs
 
 1) in project create .env and fill it from .env.example
 2) in .env Fill next fields with your local data:
@@ -23,14 +24,17 @@ go to folder afore project and set permissions:
 3) run next commands:
 - composer install
 - php artisan key:generate
-- do php artisan migrate
+- php artisan migrate
 - php artisan jwt:secret
 - php artisan storage:link
 
 go to project folder and run serve:
-- php artisan serve --port-1515
+- php artisan serve --port 1580
 
-open vue project and enter:
+IMPORTANT! check created url. Frontend work only with http://127.0.0.1:1580/
+
+Install and start frontend:
+* Open VueJs project and enter:
 
 - npm install
 - npm run serve
